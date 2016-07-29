@@ -54,12 +54,12 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-install ctype \
 	&& docker-php-ext-install exif \
 	&& docker-php-ext-install pcntl \
-	&& docker-php-ext-install pdo_sqlite \
+	&& docker-php-ext-install pdo_sqlite
 	
-	&& docker exec api a2enmod rewrite \
-	&& docker exec api a2enmod php7.0 \
-	&& docker exec api a2enmod rewrite \
-	&& docker exec api a2enmod vhost_alias
+RUN docker exec a2enmod rewrite \
+	&& docker exec a2enmod php7.0 \
+	&& docker exec a2enmod rewrite \
+	&& docker exec a2enmod vhost_alias
 
 # Update the PHP.ini file, enable <? ?> tags and quieten logging.
 RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.0/apache2/php.ini
@@ -72,7 +72,7 @@ ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
 
-RUN docker exec api service apache2 restart
+RUN docker exec service apache2 restart
 
 # Copy this repo into place.
 # ADD www /var/www/site
