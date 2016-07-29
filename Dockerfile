@@ -29,9 +29,9 @@ RUN apt-get update && apt-get install -y \
     libmagic-dev \
     libexif-dev \
     libssh2-1-dev \
-	libsqlite3-dev \
+	libsqlite3-dev
 
-	&& docker-php-ext-install json \
+RUN docker-php-ext-install json \
 	&& docker-php-ext-install mbstring \
 	&& docker-php-ext-install tokenizer \
     && docker-php-ext-install gd \
