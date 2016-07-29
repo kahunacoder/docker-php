@@ -57,9 +57,9 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-install pdo_sqlite \
 	
 	&& docker exec api a2enmod rewrite \
-	&& docker exec a2enmod php7.0 \
-	&& docker exec a2enmod rewrite \
-	&& docker exec a2enmod vhost_alias
+	&& docker exec api a2enmod php7.0 \
+	&& docker exec api a2enmod rewrite \
+	&& docker exec api a2enmod vhost_alias
 
 # Update the PHP.ini file, enable <? ?> tags and quieten logging.
 RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.0/apache2/php.ini
