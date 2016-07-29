@@ -55,9 +55,8 @@ RUN docker-php-ext-install json \
 	&& docker-php-ext-install pcntl \
 	&& docker-php-ext-install pdo_sqlite
 	
-docker-php-ext-enable rewrite \
-	&& docker-php-ext-enable php7.0 \
-	&& docker-php-ext-enable vhost_alias
+RUN a2enmod rewrite \
+	&& a2enmod vhost_alias
 
 # Update the PHP.ini file, enable <? ?> tags and quieten logging.
 RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.0/apache2/php.ini
