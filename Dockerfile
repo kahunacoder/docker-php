@@ -3,10 +3,10 @@ FROM php:7.0-apache
 MAINTAINER "Gary Smith" <docker@kc.gs>
 
 RUN apt-get update && apt-get install -y \
-	php7.0 \
-	php7.0-cli \
-	php7.0-mysql \
-	libapache2-mod-php7.0 \
+	# php7.0 \
+	# php7.0-cli \
+	# php7.0-mysql \
+	# libapache2-mod-php7.0 \
 	curl \
 	lynx-cur \
     libjpeg62-turbo-dev \
