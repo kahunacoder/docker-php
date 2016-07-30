@@ -5,7 +5,7 @@ MAINTAINER "Gary Smith" <docker@kc.gs>
 RUN apt-get update && apt-get install -y \
 	openssl \
 	curl \
-	unixodbc \
+	unixODBC-dev \
 	lynx-cur \
     libmcrypt-dev \
 	libcurl4-gnutls-dev \
@@ -30,7 +30,7 @@ RUN docker-php-ext-install json \
 	&& docker-php-ext-install dom \
 	&& docker-php-ext-install bz2 \
 	&& docker-php-ext-install pcntl \
-	&& docker-php-ext-install odbc \
+#	&& docker-php-ext-install odbc \
 	&& docker-php-ext-install sybase \
 	&& docker-php-ext-install mysqli \
 	&& docker-php-ext-install pdo \
@@ -47,6 +47,13 @@ RUN docker-php-ext-install json \
 	&& docker-php-ext-install calendar \
 	&& docker-php-ext-install ctype \
 	&& docker-php-ext-install exif
+
+RUN set -x \
+    && cd /usr/src/php/ext/odbc \
+    && phpize \
+    && sed -ri 's@^ *test +"\$PHP_.*" *= *"no" *&& *PHP_.*=yes *$@#&@g' configure \
+    && ./configure --with-unixODBC=shared,/usr \
+    && docker-php-ext-install odbc
 	
 RUN a2enmod rewrite \
 	&& a2enmod ssl \
