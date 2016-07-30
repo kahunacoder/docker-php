@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
 	freetds-common \
 	freetds-bin \
 	tdsodbc \
-	unixodbc-dev \
+	unixodbc \
 	lynx-cur \
     libmcrypt-dev \
 	libcurl4-gnutls-dev \
@@ -48,7 +48,8 @@ RUN docker-php-ext-install json \
 	&& docker-php-ext-install bcmath \
 	&& docker-php-ext-install calendar \
 	&& docker-php-ext-install ctype \
-	&& docker-php-ext-install exif
+	&& docker-php-ext-install exif \
+ 	&& rm -rf /var/lib/apt/lists/*
 
 RUN set -x \
     && cd /usr/src/php/ext/odbc \
