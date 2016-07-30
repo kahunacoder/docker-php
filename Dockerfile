@@ -31,7 +31,7 @@ RUN docker-php-ext-install json \
 	&& docker-php-ext-install bz2 \
 	&& docker-php-ext-install pcntl \
 #	&& docker-php-ext-install odbc \
-	&& docker-php-ext-install sybase \
+#	&& docker-php-ext-install sybase \
 	&& docker-php-ext-install mysqli \
 	&& docker-php-ext-install pdo \
 	&& docker-php-ext-install pdo_mysql \
