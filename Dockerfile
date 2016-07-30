@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
 	freetds-common \
 	freetds-bin \
 	tdsodbc \
-	unixodbc \
+	unixodbc-dev \
 	lynx-cur \
     libmcrypt-dev \
 	libcurl4-gnutls-dev \
