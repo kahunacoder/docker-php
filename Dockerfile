@@ -4,10 +4,6 @@ MAINTAINER "Gary Smith" <docker@kc.gs>
 
 RUN apt-get update && apt-get install -y \
 	curl \
-	freetds-common \
-	freetds-bin \
-	tdsodbc \
-	unixodbc \
 	lynx-cur \
     libmcrypt-dev \
 	libcurl4-gnutls-dev \
