@@ -3,7 +3,9 @@ FROM php:7.0-apache
 MAINTAINER "Gary Smith" <docker@kc.gs>
 
 RUN apt-get update && apt-get install -y \
+	oppenssl \
 	curl \
+	unixodbc \
 	lynx-cur \
     libmcrypt-dev \
 	libcurl4-gnutls-dev \
@@ -47,6 +49,7 @@ RUN docker-php-ext-install json \
 	&& docker-php-ext-install exif
 	
 RUN a2enmod rewrite \
+	&& a2enmod ssl \
 	&& a2enmod vhost_alias
 
 # Update the PHP.ini file, enable <? ?> tags and quieten logging.
