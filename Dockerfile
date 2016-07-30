@@ -3,7 +3,7 @@ FROM php:7.0-apache
 MAINTAINER "Gary Smith" <docker@kc.gs>
 
 RUN apt-get update && apt-get install -y \
-	oppenssl \
+	openssl \
 	curl \
 	unixodbc \
 	lynx-cur \
